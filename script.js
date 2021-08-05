@@ -7,6 +7,7 @@ let isNumber = function(n) {
 
 let play = function() {
 
+  let countOfAttempts = 3;
   let secretNumber = Math.floor(Math.random() * 100) + 1;
 
   let getAnswer = function() {
@@ -14,15 +15,39 @@ let play = function() {
 
     if (userNumber === null) {
       return;
+
     } else if (!isNumber(userNumber)) {
+
       alert('Введи число!');
+
     } else if (userNumber > secretNumber) {
-      alert('Загаданное число меньше');
+
+      countOfAttempts--;
+      alert(`Загаданное число МЕНЬШЕ, оставшееся число попыток: ${countOfAttempts}`);
+
     } else if (userNumber < secretNumber) {
-      alert('Загаданное число больше');
+
+      countOfAttempts--;
+      alert(`Загаданное число БОЛЬШЕ, оставшееся число попыток: ${countOfAttempts}`);
+
     } else {
-      alert('Поздравляю, Вы угадали!!!');
-      return;
+
+      let playAgain = confirm('Поздравляю, Вы угадали!!! Хотите сыграть ещё?');
+      if (playAgain) {
+        play();
+      } else {
+        return;
+      }
+
+    }
+
+    if (countOfAttempts === 0) {
+      let playAgain = confirm('Попытки закончились! Хотите сыграть ещё?');
+      if (playAgain) {
+        play();
+      } else {
+        return;
+      }
     }
 
     getAnswer();
