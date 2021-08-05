@@ -9,7 +9,6 @@ let play = function() {
 
   let secretNumber = Math.floor(Math.random() * 100) + 1;
 
-  
   let getAnswer = function() {
     let userNumber = prompt('Угадай число от 1 до 100:');
 
@@ -28,12 +27,9 @@ let play = function() {
 
     getAnswer();
   };
-  
-  console.dir(getAnswer);
 
   getAnswer();
   
-
 };
 
 play();
